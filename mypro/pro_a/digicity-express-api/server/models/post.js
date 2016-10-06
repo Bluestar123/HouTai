@@ -3,7 +3,12 @@ var Schema = mongoose.Schema;
 
 var PostSchema = new Schema(
   {
-    title: String
+    title: String,
+    content:String,
+    category:String
+  },
+  {
+    timestamps:true
   }
 )
 

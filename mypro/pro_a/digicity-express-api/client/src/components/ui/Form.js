@@ -2,8 +2,19 @@ import React, { PropTypes } from 'react';
 import {Link} from 'react-router';
 import Radium from 'radium';
 
-class Form extends React.Component {
 
+class Form extends React.Component {
+  handleSubmit(e){
+    e.preventDefault();
+    let title = this.refs.title.value;
+    let category = this.refs.category.value;
+    let content = this.refs.content.value;
+    if(title.length == 0){
+      alert('请正确输入')
+      return;
+    }
+    this.props.newposts({title,category,content})
+  }
   render () {
     let styles={
       form: {
@@ -61,10 +72,19 @@ class Form extends React.Component {
        }
     }
     return(
-      <form style={styles.form}>
+
+      <form style={styles.form}　onSubmit={this.handleSubmit.bind(this)}>
          <div style={styles.div}>
            <label style={styles.label}>标题</label>
            <input style={styles.input} key='1' ref='title' />
+         </div>
+         <div style={styles.div}>
+           <label style={styles.label}>类别</label>
+           <input style={styles.input} key='2' ref='category' />
+         </div>
+         <div style={styles.div}>
+           <label style={styles.label}>内容</label>
+           <textarea style={styles.input} key='3' ref='content' />
          </div>
          <div style={styles.actions}>
            <button type='submit' style={styles.button}>Submit</button>
@@ -74,5 +94,6 @@ class Form extends React.Component {
     )
   }
 }
+
 
 export default Form;
