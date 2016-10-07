@@ -30,6 +30,7 @@ db.once('open', function() {
 //              "</form>"
 //   res.send(page)
 // })
+
 app.get('/posts', function(req, res) {
   Post.find().exec(function(err, posts) {
     res.json({ posts: posts})
@@ -46,7 +47,7 @@ app.get('/post/:id', function(req, res) {
 app.post('/posts/', function(req, res) {
   // res.send('the post title is: ' + req.body.title)
   //var post = new Post({title: req.body.title});//前台来的ｔｉｔｌｅ存在ｒｅｑ．ｂｏｄｙ里，传到后台
-  //console.log(req.body);
+  console.log(req.body);
   var post = new Post({
     title:req.body.title,
     category:req.body.category,

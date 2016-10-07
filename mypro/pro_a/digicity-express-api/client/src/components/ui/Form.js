@@ -9,7 +9,7 @@ class Form extends React.Component {
     let title = this.refs.title.value;
     let category = this.refs.category.value;
     let content = this.refs.content.value;
-    if(title.length == 0){
+    if(title.length == 0 && ){
       alert('请正确输入')
       return;
     }
